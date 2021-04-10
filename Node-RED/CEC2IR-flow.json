@@ -1,0 +1,328 @@
+[
+    {
+        "id": "ff12dd66.2c1db",
+        "type": "tab",
+        "label": "CEC2IR",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "fdcfea8c.77ec3",
+        "type": "cec-in",
+        "z": "ff12dd66.2c1db",
+        "cec_adapter": "c0005e1f.d995f",
+        "name": "Sound bar",
+        "flow_in": true,
+        "flow_out": true,
+        "select_all": "false",
+        "active_source": true,
+        "image_view_on": true,
+        "text_view_on": true,
+        "inactive_source": true,
+        "request_active_source": true,
+        "routing_change": true,
+        "routing_information": true,
+        "set_stream_path": true,
+        "standby": true,
+        "record_off": true,
+        "record_on": true,
+        "record_status": true,
+        "record_tv_screen": true,
+        "clear_analogue_timer": true,
+        "clear_digital_timer": true,
+        "clear_external_timer": true,
+        "set_analogue_timer": true,
+        "set_digital_timer": true,
+        "set_external_timer": true,
+        "set_timer_program_title": true,
+        "timer_cleared_status": true,
+        "timer_status": true,
+        "cec_version": true,
+        "get_cec_version": true,
+        "give_physical_address": true,
+        "get_menu_language": true,
+        "report_physical_address": true,
+        "set_menu_language": true,
+        "deck_control": true,
+        "deck_status": true,
+        "give_deck_status": true,
+        "play": true,
+        "give_tuner_device_status": true,
+        "select_analogue_service": true,
+        "select_digital_service": true,
+        "tuner_device_status": true,
+        "tuner_step_decrement": true,
+        "tuner_step_increment": true,
+        "device_vendor_id": true,
+        "give_device_vendor_id": true,
+        "vendor_command": true,
+        "vendor_command_with_id": true,
+        "vendor_remote_button_down": true,
+        "vendor_remote_button_up": true,
+        "set_osd_string": true,
+        "give_osd_name": true,
+        "set_osd_name": true,
+        "menu_request": true,
+        "menu_status": true,
+        "user_control_pressed": true,
+        "user_control_release": true,
+        "give_device_power_status": true,
+        "report_power_status": true,
+        "feature_abort": true,
+        "abort": true,
+        "give_audio_status": true,
+        "give_system_audio_mode_status": true,
+        "report_audio_status": true,
+        "set_system_audio_mode": true,
+        "system_audio_mode_request": true,
+        "system_audio_mode_status": true,
+        "set_audio_rate": true,
+        "start_arc": true,
+        "report_arc_started": true,
+        "report_arc_ended": true,
+        "request_arc_start": true,
+        "request_arc_end": true,
+        "end_arc": true,
+        "cdc": true,
+        "none": true,
+        "x": 300,
+        "y": 180,
+        "wires": [
+            [
+                "a78942a6.a6c78",
+                "113e2309.d3778d"
+            ]
+        ]
+    },
+    {
+        "id": "a78942a6.a6c78",
+        "type": "debug",
+        "z": "ff12dd66.2c1db",
+        "name": "CEC messages",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 740,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "617a3d4e.927f44",
+        "type": "inject",
+        "z": "ff12dd66.2c1db",
+        "name": "VolUp",
+        "topic": "",
+        "payload": "0xFF827D",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 350,
+        "y": 440,
+        "wires": [
+            [
+                "ef166478.4112c"
+            ]
+        ]
+    },
+    {
+        "id": "42ca17a3.e94568",
+        "type": "inject",
+        "z": "ff12dd66.2c1db",
+        "name": "VolUp",
+        "topic": "",
+        "payload": "0xFFA25D",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 350,
+        "y": 500,
+        "wires": [
+            [
+                "ef166478.4112c"
+            ]
+        ]
+    },
+    {
+        "id": "f9d12749.e50f7",
+        "type": "debug",
+        "z": "ff12dd66.2c1db",
+        "name": "Serial in",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 780,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ef166478.4112c",
+        "type": "serial out",
+        "z": "ff12dd66.2c1db",
+        "name": "",
+        "serial": "3babdc3f.443c8c",
+        "x": 800,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "649addda.f34cac",
+        "type": "serial in",
+        "z": "ff12dd66.2c1db",
+        "name": "",
+        "serial": "3babdc3f.443c8c",
+        "x": 590,
+        "y": 500,
+        "wires": [
+            [
+                "f9d12749.e50f7"
+            ]
+        ]
+    },
+    {
+        "id": "113e2309.d3778d",
+        "type": "function",
+        "z": "ff12dd66.2c1db",
+        "name": "IR Controller",
+        "func": "/*\nThis function is intended to be used in a Node-RED function node, and is included in CEC2IR-flow.json\nIt receives msg from an cec-in Node \nThe cec-in node is provided by the node-red-contrib-cec package https://flows.nodered.org/node/node-red-contrib-cec)\nThe flow then sends a msg where msg.payload contains the string hex representation of an IR code.\n\nThe CEC opcodes were identified using both manual testing with a debug node and https://www.cec-o-matic.com\nThese CEC opcodes work well for a Sony Bravia X900H TV\nThe IR codes work well for a Vizio SB3621n-E8 soundbar\n\nThe message is intended to be sent to a serial out node provided by node-red-node-serialport \nThe serial out node should be connected to an appopriate IR blaster\n\n*/\n\n\nvar opcode = msg.payload.opcode\nvar arg = msg.payload.args[0]\nmsg = {\"payload\":\"\"}\n\nif (opcode == 68){\n    switch (arg){\n        case 65: //If vol up key was pressed\n            msg.payload = \"0xFF827D\";\n            break;\n        case 66: //If vol down key was pressed\n            msg.payload = \"0xFFA25D\";\n            break;\n        case 67: //If mute key was pressed\n            msg.payload = \"0xFF12ED\";\n            break; \n    }\n    return msg;\n} else if (opcode == 125){// GIVE_SYSTEM_AUDIO_MODE_STATUS, occurs when tv turns on\n        msg.payload = \"0xFF827D\";//turn ON soundbar\n        node.send(msg);\n        msg.payload = \"0xFFA25D\";\n        return msg;\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 560,
+        "y": 260,
+        "wires": [
+            [
+                "ef166478.4112c",
+                "11d15635.c4a81a",
+                "fb62eb2b.c0a268"
+            ]
+        ]
+    },
+    {
+        "id": "11d15635.c4a81a",
+        "type": "debug",
+        "z": "ff12dd66.2c1db",
+        "name": "Serial out",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 800,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "fb62eb2b.c0a268",
+        "type": "trigger",
+        "z": "ff12dd66.2c1db",
+        "op1": "{\"source\":5,\"target\":0,\"opcode\":122,\"args\":[30]}",
+        "op2": "",
+        "op1type": "json",
+        "op2type": "str",
+        "duration": "250",
+        "extend": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "name": "",
+        "x": 800,
+        "y": 240,
+        "wires": [
+            [
+                "75cc66f9.943e68"
+            ]
+        ]
+    },
+    {
+        "id": "75cc66f9.943e68",
+        "type": "cec-out",
+        "z": "ff12dd66.2c1db",
+        "cec_adapter": "c0005e1f.d995f",
+        "name": "",
+        "x": 1020,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b7783181.d5caf",
+        "type": "inject",
+        "z": "ff12dd66.2c1db",
+        "name": "TurnON",
+        "topic": "",
+        "payload": "0xFF02FD",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 350,
+        "y": 380,
+        "wires": [
+            [
+                "ef166478.4112c"
+            ]
+        ]
+    },
+    {
+        "id": "5196129b.57bc24",
+        "type": "inject",
+        "z": "ff12dd66.2c1db",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 600,
+        "y": 220,
+        "wires": [
+            [
+                "fb62eb2b.c0a268"
+            ]
+        ]
+    },
+    {
+        "id": "c0005e1f.d995f",
+        "type": "cec-config",
+        "z": "",
+        "OSDname": "Sound Bar",
+        "comport": "RPI",
+        "hdmiport": "1",
+        "player": false,
+        "recorder": false,
+        "tuner": false,
+        "audio": true
+    },
+    {
+        "id": "3babdc3f.443c8c",
+        "type": "serial-port",
+        "z": "",
+        "serialport": "/dev/ttyUSB0",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "\\n",
+        "responsetimeout": "10000"
+    }
+]
